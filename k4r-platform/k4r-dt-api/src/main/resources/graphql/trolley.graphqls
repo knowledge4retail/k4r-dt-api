@@ -1,0 +1,41 @@
+extend type QueryResolver {
+    " Get all trolleys (filter optional) "
+    trolleys(filter: TrolleyFilter): [Trolley]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new trolley"
+    updateTrolley(trolley: TrolleyInput, filter: TrolleyFilter): Trolley
+    "create new instances of trolleys"
+    postTrolleys(trolleys: [TrolleyInput]): [Trolley]
+}
+
+""" Trolley entity: Attributes are selectable """
+type Trolley {
+    id: ID
+    storeId: Int!
+    layers: Int!
+    width: Float!
+    height: Float!
+    depth: Float!
+}
+
+""" Trolley entity: Attributes are selectable """
+input TrolleyInput {
+    storeId: Int!
+    layers: Int!
+    width: Float!
+    height: Float!
+    depth: Float!
+}
+
+"""  Trolley filter: Attributes are selectable """
+input TrolleyFilter{
+    id: FilterField
+    storeId: FilterField
+    layers: FilterField
+    width: FilterField
+    height: FilterField
+    depth: FilterField
+}
+

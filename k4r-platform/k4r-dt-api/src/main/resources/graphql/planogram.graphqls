@@ -1,0 +1,38 @@
+extend type QueryResolver {
+    " Get all planograms (filter optional) "
+    planograms(filter: PlanogramFilter): [Planogram]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new planogram"
+    updatePlanogram(planogram: PlanogramInput, filter: PlanogramFilter): Planogram
+    "create new instances of planograms"
+    postPlanograms(planograms: [PlanogramInput]): [Planogram]
+}
+
+""" Planogram entity: Attributes are selectable """
+type Planogram {
+    id: ID!
+    storeId: Int!
+    referenceId: String!
+    timestamp: String
+    dataFormat: String
+}
+
+""" Planogram entity: Attributes are selectable """
+input PlanogramInput {
+    storeId: Int
+    referenceId: String
+    timestamp: String
+    dataFormat: String
+}
+
+"""  Store filter: Attributes are selectable """
+input PlanogramFilter {
+    id: FilterField
+    storeId: FilterField
+    referenceId: FilterField
+    timestamp: FilterField
+    dataFormat: FilterField
+}
+

@@ -1,0 +1,46 @@
+extend type QueryResolver {
+    " Get all shoppingBasketPositions (filter optional) "
+    shoppingBasketPositions(filter: ShoppingBasketPositionFilter): [ShoppingBasketPosition]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new shoppingBasketPosition"
+    updateShoppingBasketPosition(shoppingBasketPosition: ShoppingBasketPositionInput, filter: ShoppingBasketPositionFilter): ShoppingBasketPosition
+    "create new instances of shoppingBasketPositions"
+    postShoppingBasketPositions(shoppingBasketPositions: [ShoppingBasketPositionInput]): [ShoppingBasketPosition]
+}
+
+""" ShoppingBasketPosition entity: Attributes are selectable """
+type ShoppingBasketPosition {
+    id: ID!
+    productId: String!
+    storeId: Int!
+    customerId: Int!
+    sellingPrice: Float
+    quantity: Int!
+    currency: String
+}
+
+""" ShoppingBasketPosition entity: Attributes are selectable """
+input ShoppingBasketPositionInput {
+    productId: String
+    storeId: Int
+    customerId: Int
+    sellingPrice: Float
+    quantity: Int
+    currency: String
+}
+
+"""  ShoppingBasketPosition filter: Attributes are selectable """
+input ShoppingBasketPositionFilter {
+    id: FilterField
+    productId: FilterField
+    storeId: FilterField
+    customerId: FilterField
+    sellingPrice: FilterField
+    quantity: FilterField
+    currency: FilterField
+}
+
+
+

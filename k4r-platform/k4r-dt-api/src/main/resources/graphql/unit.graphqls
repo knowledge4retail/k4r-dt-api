@@ -1,0 +1,34 @@
+extend type QueryResolver {
+    " Get all units (filter optional) "
+    units(filter: UnitFilter): [Unit]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new unit"
+    updateUnit(unit: UnitInput, filter: UnitFilter): Unit
+    "create new instances of units"
+    postUnits(units: [UnitInput]): [Unit]
+}
+
+""" Unit entity: Attributes are selectable """
+type Unit {
+    id: ID!
+    name: String
+    type: String
+    symbol: String
+}
+
+""" Unit entity: Attributes are selectable """
+input UnitInput {
+    name: String
+    type: String
+    symbol: String
+}
+
+"""  Unit filter: Attributes are selectable """
+input UnitFilter {
+    id: FilterField
+    name: FilterField
+    type: FilterField
+    symbol: FilterField
+}

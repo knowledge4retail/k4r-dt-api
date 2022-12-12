@@ -1,0 +1,43 @@
+extend type QueryResolver {
+    " Get all productProperties (filter optional) "
+    productProperties(filter: ProductPropertyFilter): [ProductProperty]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new productProperty"
+    updateProductProperty(productProperty: ProductPropertyInput, filter: ProductPropertyFilter): ProductProperty
+    "create new instances of productPropertys"
+    postProductProperties(productProperties: [ProductPropertyInput]): [ProductProperty]
+}
+
+""" ProductProperty entity: Attributes are selectable """
+type ProductProperty {
+    id: ID!
+    productId: String!
+    characteristicId: Int!
+    storeId: Int
+    valueLow: String!
+    valueHigh: String
+}
+
+""" ProductProperty entity: Attributes are selectable """
+input ProductPropertyInput {
+    productId: String
+    characteristicId: Int
+    storeId: Int
+    valueLow: String
+    valueHigh: String
+}
+
+"""  ProductProperty filter: Attributes are selectable """
+input ProductPropertyFilter {
+    id: FilterField
+    productId: FilterField
+    characteristicId: FilterField
+    storeId: FilterField
+    valueLow: FilterField
+    valueHigh: FilterField
+}
+
+
+

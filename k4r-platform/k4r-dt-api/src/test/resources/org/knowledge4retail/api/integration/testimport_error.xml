@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<items>
+    <item id="TST-XMLIMP_001" name="XML Test Import Product 1">
+        <productProperty storeid="1" characteristicid="5858" valuelow="XML Test Product 1 Test Property"/>
+    </item>
+    <item id="TST-XMLIMP_002" name="XML Test Import Product 2">
+        <productProperty storeid="1" characteristicid="5858" valuelow="XML Test Product 2 Test Property"/>
+    </item>
+</items>

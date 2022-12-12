@@ -1,0 +1,15 @@
+query QueryWithoutFiltering{
+    stores {
+        id
+        storeName
+        addressPostcode
+        shelves {
+            id
+            externalReferenceId
+            shelfLayers {
+                id
+                positionZ
+            }
+        }
+    }
+}

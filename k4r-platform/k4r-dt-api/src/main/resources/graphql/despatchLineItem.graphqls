@@ -1,0 +1,43 @@
+extend type QueryResolver {
+    " Get all despatchLineItems (filter optional) "
+    despatchLineItems(filter: DespatchLineItemFilter): [DespatchLineItem]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new despatchLineItem"
+    updateDespatchLineItem(despatchLineItem: DespatchLineItemInput, filter: DespatchLineItemFilter): DespatchLineItem
+    "create new instances of despatchLineItems"
+    postDespatchLineItems(despatchLineItems: [DespatchLineItemInput]): [DespatchLineItem]
+}
+
+""" DespatchLineItem entity: Attributes are selectable """
+type DespatchLineItem {
+    id: ID!
+    despatchLogisticUnitId: Int
+    productId: String
+    requestedProductId: String
+    lineItemNumber: String
+    despatchQuantity: Int
+}
+
+""" DespatchLineItem entity: Attributes are selectable """
+input DespatchLineItemInput {
+    despatchLogisticUnitId: Int
+    productId: String
+    requestedProductId: String
+    lineItemNumber: String
+    despatchQuantity: Int
+}
+
+"""  DespatchLineItem filter: Attributes are selectable """
+input DespatchLineItemFilter {
+    id: FilterField
+    despatchLogisticUnitId: FilterField
+    productId: FilterField
+    requestedProductId: FilterField
+    lineItemNumber: FilterField
+    despatchQuantity: FilterField
+}
+
+
+

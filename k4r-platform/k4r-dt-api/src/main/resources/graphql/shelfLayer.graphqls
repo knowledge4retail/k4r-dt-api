@@ -1,0 +1,60 @@
+extend type QueryResolver {
+    " Get all shelfLayers (filter optional) "
+    shelfLayers(filter: ShelfLayerFilter): [ShelfLayer]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new shelfLayer"
+    updateShelfLayer(shelfLayer: ShelfLayerInput, filter: ShelfLayerFilter): ShelfLayer
+    "create new instances of shelfLayers"
+    postShelfLayers(shelfLayers: [ShelfLayerInput]): [ShelfLayer]
+}
+
+""" ShelfLayer entity: Attributes are selectable """
+type ShelfLayer {
+    id: ID!
+    shelfId: Int
+    level: Int
+    type: String
+    positionZ: Float
+    width: Float!
+    height: Float!
+    depth: Float!
+    lengthUnitId: Int!
+    externalReferenceId: String
+    " Get all facings for a shelfLayer (filter optional)"
+    facings(filter: FacingFilter): [Facing]
+    " Get all barcodes for a shelfLayer (filter optional)"
+    barcodes(filter: BarcodeFilter): [Barcode]
+    " Get the shelf of the shelfLayer"
+    shelf: Shelf
+}
+
+""" ShelfLayer entity: Attributes are selectable """
+input ShelfLayerInput {
+    shelfId: Int
+    level: Int
+    type: String
+    positionZ: Float
+    width: Float
+    height: Float
+    depth: Float
+    lengthUnitId: Int
+    externalReferenceId: String
+}
+
+""" ShelfLayer filter: Attributes are selectable """
+input ShelfLayerFilter {
+    id: FilterField
+    shelfId: FilterField
+    level: FilterField
+    type: FilterField
+    positionZ: FilterField
+    width: FilterField
+    height: FilterField
+    depth: FilterField
+    lengthUnitId: FilterField
+    externalReferenceId: FilterField
+}
+
+

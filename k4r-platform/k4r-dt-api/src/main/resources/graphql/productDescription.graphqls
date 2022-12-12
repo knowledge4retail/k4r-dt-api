@@ -1,0 +1,37 @@
+extend type QueryResolver {
+    " Get all productDescriptions (filter optional) "
+    productDescriptions(filter: ProductDescriptionFilter): [ProductDescription]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new productDescription"
+    updateProductDescription(productDescription: ProductDescriptionInput, filter: ProductDescriptionFilter): ProductDescription
+    "create new instances of productDescriptions"
+    postProductDescriptions(productDescriptions: [ProductDescriptionInput]): [ProductDescription]
+}
+
+""" ProductDescription entity: Attributes are selectable """
+type ProductDescription {
+    id: ID!
+    productId: String
+    description: String
+    isoLanguageCode: String
+}
+
+""" ProductDescription entity: Attributes are selectable """
+input ProductDescriptionInput {
+    productId: String
+    description: String
+    isoLanguageCode: String
+}
+
+"""  ProductDescription filter: Attributes are selectable """
+input ProductDescriptionFilter {
+    id: FilterField
+    productId: FilterField
+    description: FilterField
+    isoLanguageCode: FilterField
+}
+
+
+

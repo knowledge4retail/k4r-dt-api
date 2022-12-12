@@ -1,0 +1,46 @@
+extend type QueryResolver {
+    " Get all despatchAdvices (filter optional) "
+    despatchAdvices(filter: DespatchAdviceFilter): [DespatchAdvice]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new despatchAdvice"
+    updateDespatchAdvice(despatchAdvice: DespatchAdviceInput, filter: DespatchAdviceFilter): DespatchAdvice
+    "create new instances of despatchAdvices"
+    postDespatchAdvices(despatchAdvices: [DespatchAdviceInput]): [DespatchAdvice]
+}
+
+""" DespatchAdvice entity: Attributes are selectable """
+type DespatchAdvice {
+    id: ID!
+    storeId: Int!
+    shipTime: String
+    creationTime: String
+    senderQualifier: String
+    senderId: String
+    documentNumber: String
+}
+
+""" DespatchAdvice entity: Attributes are selectable """
+input DespatchAdviceInput {
+    storeId: Int
+    shipTime: String
+    creationTime: String
+    senderQualifier: String
+    senderId: String
+    documentNumber: String
+}
+
+"""  DespatchAdvice filter: Attributes are selectable """
+input DespatchAdviceFilter {
+    id: FilterField
+    storeId: FilterField
+    shipTime: FilterField
+    creationTime: FilterField
+    senderQualifier: FilterField
+    senderId: FilterField
+    documentNumber: FilterField
+}
+
+
+

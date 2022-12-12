@@ -1,0 +1,41 @@
+extend type QueryResolver {
+    " Get all storePropertys (filter optional) "
+    storeProperties(filter: StorePropertyFilter): [StoreProperty]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new storeProperty"
+    updateStoreProperty(storeProperty: StorePropertyInput, filter: StorePropertyFilter): StoreProperty
+    "create new instances of storePropertys"
+    postStoreProperties(storeProperties: [StorePropertyInput]): [StoreProperty]
+}
+
+""" StoreProperty entity: Attributes are selectable """
+type StoreProperty {
+    id: ID!
+    characteristicId: Int!
+    storeId: Int
+    valueLow: String!
+    valueHigh: String
+}
+
+""" StoreProperty entity: Attributes are selectable """
+input StorePropertyInput {
+    characteristicId: Int
+    storeId: Int
+    valueLow: String
+    valueHigh: String
+}
+
+
+"""  StoreProperty filter: Attributes are selectable """
+input StorePropertyFilter {
+    id: FilterField
+    characteristicId: FilterField
+    storeId: FilterField
+    valueLow: FilterField
+    valueHigh: FilterField
+}
+
+
+

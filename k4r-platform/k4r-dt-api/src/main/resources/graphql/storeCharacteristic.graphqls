@@ -1,0 +1,34 @@
+extend type QueryResolver {
+    " Get all storeCharacteristics (filter optional) "
+    storeCharacteristics(filter: StoreCharacteristicFilter): [StoreCharacteristic]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new storeCharacteristic"
+    updateStoreCharacteristic(storeCharacteristic: StoreCharacteristicInput, filter: StoreCharacteristicFilter): StoreCharacteristic
+    "create new instances of storeCharacteristics"
+    postStoreCharacteristics(storeCharacteristics: [StoreCharacteristicInput]): [StoreCharacteristic]
+}
+
+""" StoreCharacteristic entity: Attributes are selectable """
+type StoreCharacteristic {
+    id: ID!
+    name: String!
+    code: String
+}
+
+""" StoreCharacteristic entity: Attributes are selectable """
+input StoreCharacteristicInput {
+    name: String
+    code: String
+}
+
+"""  StoreCharacteristic filter: Attributes are selectable """
+input StoreCharacteristicFilter {
+    id: FilterField
+    name: FilterField
+    code: FilterField
+}
+
+
+

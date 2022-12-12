@@ -1,0 +1,34 @@
+extend type QueryResolver {
+    " Get all productCharacteristics (filter optional) "
+    productCharacteristics(filter: ProductCharacteristicFilter): [ProductCharacteristic]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new productCharacteristic"
+    updateProductCharacteristic(productCharacteristic: ProductCharacteristicInput, filter: ProductCharacteristicFilter): ProductCharacteristic
+    "create new instances of productCharacteristics"
+    postProductCharacteristics(productCharacteristics: [ProductCharacteristicInput]): [ProductCharacteristic]
+}
+
+""" ProductCharacteristic entity: Attributes are selectable """
+type ProductCharacteristic {
+    id: ID!
+    name: String!
+    code: String
+}
+
+""" ProductCharacteristic entity: Attributes are selectable """
+input ProductCharacteristicInput {
+    name: String
+    code: String
+}
+
+"""  ProductCharacteristic filter: Attributes are selectable """
+input ProductCharacteristicFilter {
+    id: FilterField
+    name: FilterField
+    code: FilterField
+}
+
+
+

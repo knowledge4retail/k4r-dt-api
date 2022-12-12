@@ -1,0 +1,53 @@
+version: '3.7'
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  k4r-api:
+    build:
+      context: ./k4r-platform
+      dockerfile: ./k4r-dt-api/Dockerfile
+    image: registry.gitlab.com/knowledge4retail/k4r-dt-api/k4r-dt-api:${CI_COMMIT_TAG:-latest}
+  zookeeper:
+    image: zookeeper:3.6
+    networks:
+      default:
+        aliases:
+          - zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka:2.13-2.6.0
+    networks:
+      default:
+        aliases:
+          - kafka
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://:19092,LISTENER_DOCKER_EXTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:19092,LISTENER_DOCKER_EXTERNAL://10.0.0.100:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+  postgres:
+    image: timescale/timescaledb:2.3.1-pg11
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: "k4r"
+      POSTGRES_USER: "k4r-admin"
+      POSTGRES_PASSWORD: "k4r-admin"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: k4r
+    name: k4r

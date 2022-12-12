@@ -1,0 +1,41 @@
+extend type QueryResolver {
+    " Get all barcodes (filter optional) "
+    barcodes(filter: BarcodeFilter): [Barcode]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new barcode"
+    updateBarcode(barcode: BarcodeInput, filter: BarcodeFilter): Barcode
+    "create new instances of barcodes"
+    postBarcodes(barcodes: [BarcodeInput]): [Barcode]
+}
+
+""" Barcode entity: Attributes are selectable """
+type Barcode {
+    id: ID!
+    shelfLayerId: Int
+    productGtinId: Int
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+}
+
+""" Barcode entity: Attributes are selectable """
+input BarcodeInput {
+    shelfLayerId: Int
+    productGtinId: Int
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+}
+
+"""  Store filter: Attributes are selectable """
+input BarcodeFilter {
+    id: FilterField
+    shelfLayerId: FilterField
+    productGtinId: FilterField
+    positionX: FilterField
+    positionY: FilterField
+    positionZ: FilterField
+}
+

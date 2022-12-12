@@ -1,0 +1,56 @@
+extend type QueryResolver {
+    " Get all deviceStatus (filter optional) "
+    deviceStatus(filter: DeviceStatusFilter): [DeviceStatus]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new deviceStatus"
+    updateDeviceStatus(deviceStatus: DeviceStatusInput, filter: DeviceStatusFilter): DeviceStatus
+    "create new instances of deviceStatuss"
+    postDeviceStatus(deviceStatus: [DeviceStatusInput]): [DeviceStatus]
+}
+
+""" DeviceStatus entity: Attributes are selectable """
+type DeviceStatus {
+    deviceId: ID!
+    timestamp: Int!
+    frameId: String
+    positionX: Float!
+    positionY: Float!
+    positionZ: Float!
+    orientationX: Float!
+    orientationY: Float!
+    orientationZ: Float!
+    orientationW: Float!
+}
+
+""" DeviceStatus entity: Attributes are selectable """
+input DeviceStatusInput {
+    deviceId: String
+    timestamp: Int
+    frameId: String
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+}
+
+"""  DeviceStatus filter: Attributes are selectable """
+input DeviceStatusFilter {
+    deviceId: FilterField
+    timestamp: FilterField
+    frameId: FilterField
+    positionX: FilterField
+    positionY: FilterField
+    positionZ: FilterField
+    orientationX: FilterField
+    orientationY: FilterField
+    orientationZ: FilterField
+    orientationW: FilterField
+}
+
+
+

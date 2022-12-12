@@ -1,0 +1,29 @@
+query QueryWithFiltering {
+    stores (filter: {
+        id: {
+            operator: "gt"
+            value: "200"
+            type: "int"
+        },
+        storeName: {
+            operator: "contains"
+            value: "STORE"
+            type: "string"
+        }
+    }) {
+        id
+        storeName
+        addressCity
+        shelves (filter: {
+            externalReferenceId: {
+                operator: "contains"
+                value: "SHELF_ID_DELETE"
+                type: "string"
+            }
+        }) {
+            id
+            storeId
+            externalReferenceId
+        }
+    }
+}

@@ -1,0 +1,81 @@
+extend type QueryResolver {
+    " Get all shelves (filter optional) "
+    shelves(filter: ShelfFilter): [Shelf]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new shelf"
+    updateShelf(shelf: ShelfInput, filter: ShelfFilter): Shelf
+    "create new instances of shelves"
+    postShelves(shelves: [ShelfInput]): [Shelf]
+}
+
+""" Shelf entity: Attributes are selectable """
+type Shelf {
+    id: ID!
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+    width: Float!
+    height: Float!
+    depth: Float!
+    lengthUnitId: Int!
+    productGroupId: Int
+    storeId: Int
+    cadPlanId: String
+    blockId: Int
+    runningNumber: Int
+    externalReferenceId: String
+    " Get all shelfLayers for a shelf (filter optional)"
+    shelfLayers(filter: ShelfLayerFilter): [ShelfLayer]
+    " Get productGroup of the shelf"
+    productGroup: ProductGroup
+}
+
+""" Shelf entity: Attributes are selectable """
+input ShelfInput {
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+    width: Float
+    height: Float
+    depth: Float
+    lengthUnitId: Int
+    productGroupId: Int
+    storeId: Int
+    cadPlanId: String
+    blockId: Int
+    runningNumber: Int
+    externalReferenceId: String
+}
+
+"""  Shelf filter: Attributes are selectable """
+input ShelfFilter{
+    id: FilterField
+    positionX: FilterField
+    positionY: FilterField
+    positionZ: FilterField
+    orientationX: FilterField
+    orientationY: FilterField
+    orientationZ: FilterField
+    orientationW: FilterField
+    width: FilterField
+    height: FilterField
+    depth: FilterField
+    lengthUnitId: FilterField
+    productGroupId: FilterField
+    storeId: FilterField
+    cadPlanId: FilterField
+    blockId: FilterField
+    runningNumber: FilterField
+    externalReferenceId: FilterField
+}
+

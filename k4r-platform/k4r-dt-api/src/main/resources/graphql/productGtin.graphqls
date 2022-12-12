@@ -1,0 +1,44 @@
+extend type QueryResolver {
+    " Get all productGtins (filter optional) "
+    productGtins(filter: ProductGtinFilter): [ProductGtin]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new productGtin"
+    updateProductGtin(productGtin: ProductGtinInput, filter: ProductGtinFilter): ProductGtin
+    "create new instances of productGtins"
+    postProductGtins(productGtins: [ProductGtinInput]): [ProductGtin]
+}
+
+""" ProductGtin entity: Attributes are selectable """
+type ProductGtin {
+    id: ID!
+    gtin: String
+    productUnitId: Int
+    gtinType: String
+    mainGtinFlag: Boolean
+    externalReferenceId: String
+}
+
+""" ProductGtin entity: Attributes are selectable """
+input ProductGtinInput {
+    id: Int
+    gtin: String
+    productUnitId: Int
+    gtinType: String
+    mainGtinFlag: Boolean
+    externalReferenceId: String
+}
+
+"""  ProductGtin filter: Attributes are selectable """
+input ProductGtinFilter {
+    id: FilterField
+    gtin: FilterField
+    productUnitId: FilterField
+    gtinType: FilterField
+    mainGtinFlag: FilterField
+    externalReferenceId: FilterField
+}
+
+
+

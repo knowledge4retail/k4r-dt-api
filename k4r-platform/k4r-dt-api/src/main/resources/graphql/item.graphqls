@@ -1,0 +1,46 @@
+extend type QueryResolver {
+    " Get all items (filter optional) "
+    items(filter: ItemFilter): [Item]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new item"
+    updateItem(item: ItemInput, filter: ItemFilter): Item
+    "create new instances of items"
+    postItems(items: [ItemInput]): [Item]
+}
+
+""" Item entity: Attributes are selectable """
+type Item {
+    id: ID!
+    positionInFacingX: Int
+    positionInFacingY: Int
+    positionInFacingZ: Int
+    facingId: Int
+    externalReferenceId: String
+    productUnitId: Int
+}
+
+""" Item entity: Attributes are selectable """
+input ItemInput {
+    positionInFacingX: Int
+    positionInFacingY: Int
+    positionInFacingZ: Int
+    facingId: Int
+    externalReferenceId: String
+    productUnitId: Int
+}
+
+"""  Item filter: Attributes are selectable """
+input ItemFilter {
+    id: FilterField
+    positionInFacingX: FilterField
+    positionInFacingY: FilterField
+    positionInFacingZ: FilterField
+    facingId: FilterField
+    externalReferenceId: FilterField
+    productUnitId: FilterField
+}
+
+
+

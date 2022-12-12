@@ -1,0 +1,88 @@
+extend type QueryResolver {
+    " Get all deviceImages (filter optional) "
+    deviceImages(filter: DeviceImageFilter): [DeviceImage]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new deviceImage"
+    updateDeviceImage(deviceImage: DeviceImageInput, filter: DeviceImageFilter): DeviceImage
+    "create new instances of deviceImages"
+    postDeviceImages(deviceImages: [DeviceImageInput]): [DeviceImage]
+}
+
+""" DeviceImage entity: Attributes are selectable """
+type DeviceImage {
+    id: ID!
+    timestamp: Int
+    frameId: String
+    deviceId: String
+    cameraPositionX: Float!
+    cameraPositionY: Float!
+    cameraPositionZ: Float!
+    cameraOrientationX: Float!
+    cameraOrientationY: Float!
+    cameraOrientationZ: Float!
+    cameraOrientationW: Float!
+    devicePositionX: Float!
+    devicePositionY: Float!
+    devicePositionZ: Float!
+    deviceOrientationX: Float!
+    deviceOrientationY: Float!
+    deviceOrientationZ: Float!
+    deviceOrientationW: Float!
+    labelId: String!
+    labelName: String!
+    blobUrl: String
+}
+
+""" DeviceImage entity: Attributes are selectable """
+input DeviceImageInput {
+    timestamp: Int
+    frameId: String
+    deviceId: String
+    cameraPositionX: Float
+    cameraPositionY: Float
+    cameraPositionZ: Float
+    cameraOrientationX: Float
+    cameraOrientationY: Float
+    cameraOrientationZ: Float
+    cameraOrientationW: Float
+    devicePositionX: Float
+    devicePositionY: Float
+    devicePositionZ: Float
+    deviceOrientationX: Float
+    deviceOrientationY: Float
+    deviceOrientationZ: Float
+    deviceOrientationW: Float
+    labelId: String
+    labelName: String
+    blobUrl: String
+}
+
+"""  DeviceImage filter: Attributes are selectable """
+input DeviceImageFilter {
+    id: FilterField
+    timestamp: FilterField
+    frameId: FilterField
+    deviceId: FilterField
+    cameraPositionX: FilterField
+    cameraPositionY: FilterField
+    cameraPositionZ: FilterField
+    cameraOrientationX: FilterField
+    cameraOrientationY: FilterField
+    cameraOrientationZ: FilterField
+    cameraOrientationW: FilterField
+    devicePositionX: FilterField
+    devicePositionY: FilterField
+    devicePositionZ: FilterField
+    deviceOrientationX: FilterField
+    deviceOrientationY: FilterField
+    deviceOrientationZ: FilterField
+    deviceOrientationW: FilterField
+    labelId: FilterField
+    labelName: FilterField
+    blobUrl: FilterField
+}
+
+
+

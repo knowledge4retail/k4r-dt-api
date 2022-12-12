@@ -1,0 +1,7 @@
+query stores{
+    stores {
+        id
+        storeName
+        addressCountry
+    }
+}

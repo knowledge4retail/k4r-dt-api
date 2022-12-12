@@ -1,0 +1,41 @@
+extend type QueryResolver {
+    " Get all materialGroups (filter optional) "
+    materialGroups(filter: MaterialGroupFilter): [MaterialGroup]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new materialGroup"
+    updateMaterialGroup(materialGroup: MaterialGroupInput, filter: MaterialGroupFilter): MaterialGroup
+    "create new instances of materialGroups"
+    postMaterialGroups(materialGroups: [MaterialGroupInput]): [MaterialGroup]
+}
+
+
+""" MaterialGroup entity: Attributes are selectable """
+type MaterialGroup {
+    id: ID!
+    name: String
+    description: String
+    hierarchyLevel: Int
+    parentId: Int
+}
+
+""" MaterialGroup entity: Attributes are selectable """
+input MaterialGroupInput {
+    name: String
+    description: String
+    hierarchyLevel: Int
+    parentId: Int
+}
+
+"""  MaterialGroup filter: Attributes are selectable """
+input MaterialGroupFilter {
+    id: FilterField
+    name: FilterField
+    description: FilterField
+    hierarchyLevel: FilterField
+    parentId: FilterField
+}
+
+
+

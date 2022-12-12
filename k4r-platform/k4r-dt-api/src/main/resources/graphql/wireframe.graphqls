@@ -1,0 +1,35 @@
+extend type QueryResolver {
+    " Get all Wireframes (filter optional) "
+    Wireframes(filter: WireframeFilter): [Wireframe]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new Wireframe"
+    updateWireframe(Wireframe: WireframeInput, filter: WireframeFilter): Wireframe
+    "create new instances of Wireframes"
+    postWireframes(Wireframes: [WireframeInput]): [Wireframe]
+}
+
+""" Wireframe entity: Attributes are selectable """
+type Wireframe {
+    id: ID!
+    gTIN: String!
+    timestamp: String
+    dataFormat: String
+}
+
+""" Wireframe entity: Attributes are selectable """
+input WireframeInput {
+    gTIN: String
+    timestamp: String
+    dataFormat: String
+}
+
+"""  Store filter: Attributes are selectable """
+input WireframeFilter {
+    id: FilterField
+    gTIN: FilterField
+    timestamp: FilterField
+    dataFormat: FilterField
+}
+

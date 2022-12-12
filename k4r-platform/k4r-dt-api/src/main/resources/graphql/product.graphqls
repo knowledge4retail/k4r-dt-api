@@ -1,0 +1,40 @@
+extend type QueryResolver {
+    " Get all products (filter optional) "
+    products(filter: ProductFilter): [Product]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new product"
+    updateProduct(product: ProductInput, filter: ProductFilter): Product
+    "create new instances of products"
+    postProducts(products: [ProductInput]): [Product]
+}
+
+""" Product entity: Attributes are selectable """
+type Product {
+    id: ID!
+    materialGroupId: Int
+    productType: String
+    productBaseUnit: String
+    " Get all productDescription for a product (filter optional)"
+    productDescriptions(filter: ProductDescriptionFilter): [ProductDescription]
+}
+
+""" Product entity: Attributes are selectable """
+input ProductInput {
+    id: String
+    materialGroupId: Int
+    productType: String
+    productBaseUnit: String
+}
+
+"""  Product filter: Attributes are selectable """
+input ProductFilter {
+    id: FilterField
+    materialGroupId: FilterField
+    productType: FilterField
+    productBaseUnit: FilterField
+}
+
+
+

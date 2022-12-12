@@ -1,0 +1,37 @@
+extend type QueryResolver {
+    " Get all devices (filter optional) "
+    devices(filter: DeviceFilter): [Device]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new device"
+    updateDevice(device: DeviceInput, filter: DeviceFilter): Device
+    "create new instances of devices"
+    postDevices(devices: [DeviceInput]): [Device]
+}
+
+""" Device entity: Attributes are selectable """
+type Device {
+    id: ID!
+    storeId: Int
+    deviceType: String
+    description: String
+}
+
+""" Device entity: Attributes are selectable """
+input DeviceInput {
+    storeId: Int
+    deviceType: String
+    description: String
+}
+
+"""  Device filter: Attributes are selectable """
+input DeviceFilter {
+    id: FilterField
+    storeId: FilterField
+    deviceType: FilterField
+    description: FilterField
+}
+
+
+

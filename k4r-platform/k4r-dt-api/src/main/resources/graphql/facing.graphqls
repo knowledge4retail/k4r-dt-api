@@ -1,0 +1,58 @@
+extend type QueryResolver {
+    " Get all facings (filter optional) "
+    facings(filter: FacingFilter): [Facing]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new facing"
+    updateFacing(facing: FacingInput, filter: FacingFilter): Facing
+    "create new instances of facings"
+    postFacings(facings: [FacingInput]): [Facing]
+}
+
+""" Facing entity: Attributes are selectable """
+type Facing {
+    id: ID!
+    shelfLayerId: Int
+    layerRelativePosition: Int
+    noOfItemsWidth: Int
+    noOfItemsDepth: Int
+    noOfItemsHeight: Int
+    minStock: Int
+    stock: Int
+    misplacedStock: Int
+    productUnitId: Int
+    externalReferenceId: String
+    " Get the shelfLayer of the facing"
+    shelfLayer: ShelfLayer
+}
+
+""" Facing entity: Attributes are selectable """
+input FacingInput {
+    shelfLayerId: Int
+    layerRelativePosition: Int
+    noOfItemsWidth: Int
+    noOfItemsDepth: Int
+    noOfItemsHeight: Int
+    minStock: Int
+    stock: Int
+    misplacedStock: Int
+    productUnitId: Int
+    externalReferenceId: String
+}
+
+"""  Store filter: Attributes are selectable """
+input FacingFilter {
+    id: FilterField
+    shelfLayerId: FilterField
+    layerRelativePosition: FilterField
+    noOfItemsWidth: FilterField
+    noOfItemsDepth: FilterField
+    noOfItemsHeight: FilterField
+    minStock: FilterField
+    stock: FilterField
+    misplacedStock: FilterField
+    productUnitId: FilterField
+    externalReferenceId: FilterField
+}
+

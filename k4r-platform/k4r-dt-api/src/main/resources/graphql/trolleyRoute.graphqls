@@ -1,0 +1,38 @@
+extend type QueryResolver {
+    " Get all trolleyRoutes (filter optional) "
+    trolleyRoutes(filter: TrolleyRouteFilter): [TrolleyRoute]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new trolley route"
+    updateTrolleyRoute(trolleyRoute: TrolleyRouteInput, filter: TrolleyRouteFilter): TrolleyRoute
+    "create new instances of trolley routes"
+    postTrolleyRoutes(trolleyRoutes: [TrolleyRouteInput]): [TrolleyRoute]
+}
+
+""" TrolleyRoute entity: Attributes are selectable """
+type TrolleyRoute {
+    id: ID
+    trolleyId: Int!
+    sortingDate: String!
+    routeOrder: Int!
+    shelfId: Int!
+}
+
+""" TrolleyRoute entity: Attributes are selectable """
+input TrolleyRouteInput {
+    trolleyId: Int!
+    sortingDate: String!
+    routeOrder: Int!
+    shelfId: Int!
+}
+
+"""  TrolleyRoute filter: Attributes are selectable """
+input TrolleyRouteFilter{
+    id: FilterField
+    trolleyId: FilterField
+    sortingDate: FilterField
+    routeOrder: FilterField
+    shelfId: FilterField
+}
+

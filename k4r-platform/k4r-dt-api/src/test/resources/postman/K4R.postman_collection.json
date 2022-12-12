@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "56dab4d1-34fb-4b52-9882-e2a05524b4e4",
+		"name": "K4R Copy 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Map2D",
+			"item": [
+				{
+					"name": "SaveMap2D",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"header\": {\r\n    \"timestamp\": 1233453453,\r\n    \"frameId\": \"cool456456456\",\r\n    \"deviceId\": \"mir_robot\"\r\n  },\r\n  \"resolution\": 0.02,\r\n  \"width\": 123,\r\n  \"height\": 1111,\r\n  \"origin\": {\r\n    \"position\": {\r\n      \"x\": 123,\r\n      \"y\": 345,\r\n      \"z\": 345\r\n    },\r\n    \"orientation\": {\r\n      \"x\": 1,\r\n      \"y\": 2,\r\n      \"z\": 3,\r\n      \"w\": 4\r\n    }\r\n  },\r\n  \"data\": [0,-1,56,100,24,26663,90]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores/1/map2d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores",
+								"1",
+								"map2d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMap2d",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores/4/map2d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores",
+								"4",
+								"map2d"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "SaveStore",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"storeName\": \"My Fav Store\",\r\n    \"storeNumber\": \"MFS001\",\r\n    \"addressCountry\": \"DE\",\r\n    \"addressState\": \"Land Bremen\",\r\n    \"addressCity\": \"Bremen\",\r\n    \"addressPostcode\": \"28217\",\r\n    \"addressStreet\": \"Konsul-Smidt-Straße\",\r\n    \"addressStreetNumber\": \"24\",\r\n    \"addressAdditional\": \"\",\r\n    \"longitude\": 188.773772,\r\n    \"latitude\": 53.091221,\r\n    \"cadPlanId\": \"CAD123x\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStoreById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"storeName\": \"My Absolutely Fav Store\",\r\n    \"storeNumber\": \"MFS001\",\r\n    \"addressCountry\": \"DE\",\r\n    \"addressState\": \"Land Bremen\",\r\n    \"addressCity\": \"Bremen\",\r\n    \"addressPostcode\": \"28217\",\r\n    \"addressStreet\": \"Konsul-Smidt-Straße\",\r\n    \"addressStreetNumber\": \"24\",\r\n    \"addressAdditional\": \"\",\r\n    \"longitude\": 188.773772,\r\n    \"latitude\": 53.091221,\r\n    \"cadPlanId\": \"CAD123x\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllStores",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetStoreById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStoreById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/k4r/api/v0/stores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "SensorsData",
+			"item": [
+				{
+					"name": "k4r/api/v0/device/1/image",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "data",
+									"value": "{  \"metadata\": {\n    \"deviceId\": \"s3334ng\",\n    \"frameId\": \"234\",\n    \"timestamp\": 55\n  },\n  \"device_pose\": {\n    \"orientation\": {\n      \"w\": 1,\n      \"x\": 2,\n      \"y\": 3,\n      \"z\":40\n    },\n    \"position\": {\n      \"x\": 4,\n      \"y\":2,\n      \"z\": 2\n    }\n  },\n  \"camera_pose\": {\n    \"orientation\": {\n      \"w\": 1,\n      \"x\": 2,\n      \"y\": 3,\n      \"z\":40\n    },\n    \"position\": {\n      \"x\": 4,\n      \"y\":2,\n      \"z\": 2\n    }\n  },\n\"label_name\": \"shelf\",\n\"label_id\":\"5\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8090/k4r/api/v0/device/1/image",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8090",
+							"path": [
+								"k4r",
+								"api",
+								"v0",
+								"device",
+								"1",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

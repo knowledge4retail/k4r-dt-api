@@ -1,0 +1,110 @@
+schema {
+    query: QueryResolver
+    mutation: MutationResolver
+}
+
+""" QueryResolver: Contain all query available in graphQL """
+type QueryResolver {
+    " Get all stores (filter optional) "
+    stores(filter: StoreFilter): [Store]
+}
+
+""" MutationResolver: Contain all mutation available in graphQL """
+type MutationResolver {
+    "Update selectable attributes or create new store"
+    updateStore(store: StoreInput, filter: StoreFilter): Store
+    "create new instances of stores"
+    postStores(stores: [StoreInput]): [Store]
+}
+
+""" Store entity: Attributes are selectable """
+type Store {
+    id: ID!
+    storeName: String!
+    storeNumber: String
+    addressCountry: String
+    addressState: String
+    addressCity: String
+    addressPostcode: String
+    addressStreet: String
+    addressStreetNumber: String
+    addressAdditional: String
+    latitude: Float
+    longitude: Float
+    cadPlanId: String
+    externalReferenceId: String
+    " Get all shelves for a store (filter optional)"
+    shelves(filter: ShelfFilter): [Shelf]
+}
+
+""" Store entity: Attributes are selectable """
+input StoreInput {
+    storeName: String
+    storeNumber: String
+    addressCountry: String
+    addressState: String
+    addressCity: String
+    addressPostcode: String
+    addressStreet: String
+    addressStreetNumber: String
+    addressAdditional: String
+    latitude: Float
+    longitude: Float
+    cadPlanId: String
+}
+
+"""  Store filter: Attributes are selectable """
+input StoreFilter {
+    id: FilterField
+    storeName: FilterField
+    storeNumber: FilterField
+    addressCountry: FilterField
+    addressState: FilterField
+    addressCity: FilterField
+    addressPostcode: FilterField
+    addressStreet: FilterField
+    addressStreetNumber: FilterField
+    addressAdditional: FilterField
+    longitude: FilterField
+    latitude: FilterField
+    cadPlanId: FilterField
+    externalReferenceId: FilterField
+}
+
+""" FilterField can filter datatypes like floats, integers, boolean and strings.
+Example:
+operator: "eq"
+value: "1000"
+type: "int"
+
+Number operators:
+- lt: lower than
+- le: lower equal
+- gt: greater than
+- ge: grater equal
+- eq: equal
+- ne: not equal
+
+Boolean values:
+- true
+- false
+
+String operators:
+- startsWith
+- endsWith
+- contains
+- eq: equal
+- ne: not equal
+
+type is restricted to the following options:
+- float
+- int
+- boolean
+- string
+
+"""
+input FilterField {
+    operator: String!
+    value: String!
+    type: String!
+}

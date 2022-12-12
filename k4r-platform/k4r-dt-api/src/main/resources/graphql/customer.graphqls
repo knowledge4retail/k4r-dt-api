@@ -1,0 +1,32 @@
+extend type QueryResolver {
+    " Get all customers (filter optional) "
+    customers(filter: CustomerFilter): [Customer]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new customer"
+    updateCustomer(customer: CustomerInput, filter: CustomerFilter): Customer
+    "create new instances of customers"
+    postCustomers(customers: [CustomerInput]): [Customer]
+}
+
+
+""" Customer entity: Attributes are selectable """
+type Customer {
+    id: ID!
+    anonymisedName: String!
+}
+
+""" Customer entity: Attributes are selectable """
+input CustomerInput {
+    anonymisedName: String
+}
+
+"""  Customer filter: Attributes are selectable """
+input CustomerFilter {
+    id: FilterField
+    anonymisedName: FilterField
+}
+
+
+

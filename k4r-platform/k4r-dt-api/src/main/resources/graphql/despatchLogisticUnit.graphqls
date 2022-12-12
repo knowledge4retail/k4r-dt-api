@@ -1,0 +1,43 @@
+extend type QueryResolver {
+    " Get all despatchLogisticUnits (filter optional) "
+    despatchLogisticUnits(filter: DespatchLogisticUnitFilter): [DespatchLogisticUnit]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new despatchLogisticUnit"
+    updateDespatchLogisticUnit(despatchLogisticUnit: DespatchLogisticUnitInput, filter: DespatchLogisticUnitFilter): DespatchLogisticUnit
+    "create new instances of despatchLogisticUnits"
+    postDespatchLogisticUnits(despatchLogisticUnits: [DespatchLogisticUnitInput]): [DespatchLogisticUnit]
+}
+
+""" DespatchLogisticUnit entity: Attributes are selectable """
+type DespatchLogisticUnit {
+    id: ID!
+    parentId: Int
+    despatchAdviceId: Int
+    packageTypeCode: String
+    logisticUnitId: Int
+    estimatedDelivery: String
+}
+
+""" DespatchLogisticUnit entity: Attributes are selectable """
+input DespatchLogisticUnitInput {
+    parentId: Int
+    despatchAdviceId: Int
+    packageTypeCode: String
+    logisticUnitId: Int
+    estimatedDelivery: String
+}
+
+"""  DespatchLogisticUnit filter: Attributes are selectable """
+input DespatchLogisticUnitFilter {
+    id: FilterField
+    parentId: FilterField
+    despatchAdviceId: FilterField
+    packageTypeCode: FilterField
+    logisticUnitId: FilterField
+    estimatedDelivery: FilterField
+}
+
+
+

@@ -1,0 +1,69 @@
+extend type QueryResolver {
+    " Get all deliveredUnits (filter optional) "
+    deliveredUnits(filter: DeliveredUnitFilter): [DeliveredUnit]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new deliveredUnit"
+    updateDeliveredUnit(deliveredUnit: DeliveredUnitInput, filter: DeliveredUnitFilter): DeliveredUnit
+    "create new instances of deliveredUnits"
+    postDeliveredUnits(deliveredUnits: [DeliveredUnitInput]): [DeliveredUnit]
+}
+
+""" DeliveredUnit entity: Attributes are selectable """
+type DeliveredUnit {
+    id: ID!
+    trolleyId: Int
+    productUnitId: Int!
+    productGtinId: Int!
+    trolleyLayer: Int
+    palletId: String!
+    sortingState: String
+    sortingDate: String
+    amountUnit: Int!
+    amountItems: Int!
+    width: Float!
+    height: Float!
+    depth: Float!
+    " Get productGtin of deliveredUnit "
+    productGtin: ProductGtin
+    " Get productUnit of deliveredUnit "
+    productUnit: ProductUnit
+}
+
+""" DeliveredUnit entity: Attributes are selectable """
+input DeliveredUnitInput {
+    trolleyId: Int
+    productUnitId: Int!
+    productGtinId: Int!
+    trolleyLayer: Int
+    palletId: String!
+    sortingState: String
+    sortingDate: String
+    amount: Int!
+    amountUnit: Int!
+    amountItems: Int!
+    width: Float!
+    height: Float!
+    depth: Float!
+}
+
+"""  DeliveredUnit filter: Attributes are selectable """
+input DeliveredUnitFilter {
+    id: FilterField
+    trolleyId: FilterField
+    productUnitId: FilterField
+    productGtinId: FilterField
+    trolleyLayer: FilterField
+    palletId: FilterField
+    sortingState: FilterField
+    sortingDate: FilterField
+    amountUnit: FilterField
+    amountItems: FilterField
+    width: FilterField
+    height: FilterField
+    depth: FilterField
+}
+
+
+

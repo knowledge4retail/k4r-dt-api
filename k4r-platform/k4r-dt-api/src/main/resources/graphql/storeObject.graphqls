@@ -1,0 +1,73 @@
+extend type QueryResolver {
+    " Get all storeObjects (filter optional) "
+    storeObjects(filter: StoreObjectFilter): [StoreObject]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new storeObject"
+    updateStoreObject(storeObject: StoreObjectInput, filter: StoreObjectFilter): StoreObject
+    "create new instances of storeObjects"
+    postStoreObjects(storeObjects: [StoreObjectInput]): [StoreObject]
+}
+
+""" StoreObject entity: Attributes are selectable """
+type StoreObject {
+    id: ID!
+    type: String!
+    description: String
+    locationTimestamp: String
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+    width: Float!
+    height: Float!
+    depth: Float!
+    lengthUnitId: Int!
+    storeId: Int
+}
+
+""" StoreObject entity: Attributes are selectable """
+input StoreObjectInput {
+    type: String
+    description: String
+    locationTimestamp: String
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+    width: Float
+    height: Float
+    depth: Float
+    lengthUnitId: Int
+    storeId: Int
+}
+
+"""  StoreObject filter: Attributes are selectable """
+input StoreObjectFilter {
+    id: FilterField
+    type: FilterField
+    description: FilterField
+    locationTimestamp: FilterField
+    positionX: FilterField
+    positionY: FilterField
+    positionZ: FilterField
+    orientationX: FilterField
+    orientationY: FilterField
+    orientationZ: FilterField
+    orientationW: FilterField
+    width: FilterField
+    height: FilterField
+    depth: FilterField
+    lengthUnitId: FilterField
+    storeId: FilterField
+}
+
+
+

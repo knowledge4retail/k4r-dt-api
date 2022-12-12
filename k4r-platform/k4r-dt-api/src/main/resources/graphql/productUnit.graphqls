@@ -1,0 +1,72 @@
+extend type QueryResolver {
+    " Get all productUnits (filter optional) "
+    productUnits(filter: ProductUnitFilter): [ProductUnit]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new productUnit"
+    updateProductUnit(productUnit: ProductUnitInput, filter: ProductUnitFilter): ProductUnit
+    "create new instances of productUnits"
+    postProductUnits(productUnits: [ProductUnitInput]): [ProductUnit]
+}
+
+""" ProductUnit entity: Attributes are selectable """
+type ProductUnit {
+    id: ID!
+    productId: String
+    unitCode: String
+    numeratorBaseUnit: Int
+    denominatorBaseUnit: Int
+    length: Float!
+    width: Float!
+    height: Float!
+    dimensionUnit: Int
+    volume: Float
+    volumeUnit: Float
+    netWeight: Float
+    grossWeight: Float
+    weightUnit: Int
+    maxStackSize: Int
+    " Get product of productUnit "
+    product: Product
+}
+
+""" ProductUnit entity: Attributes are selectable """
+input ProductUnitInput {
+    productId: String
+    unitCode: String
+    numeratorBaseUnit: Int
+    denominatorBaseUnit: Int
+    length: Float
+    width: Float
+    height: Float
+    dimensionUnit: Int
+    volume: Float
+    volumeUnit: Float
+    netWeight: Float
+    grossWeight: Float
+    weightUnit: Int
+    maxStackSize: Int
+}
+
+"""  ProductUnit filter: Attributes are selectable """
+input ProductUnitFilter {
+    id: FilterField
+    productId: FilterField
+    unitCode: FilterField
+    numeratorBaseUnit: FilterField
+    denominatorBaseUnit: FilterField
+    length: FilterField
+    width: FilterField
+    height: FilterField
+    dimensionUnit: FilterField
+    volume: FilterField
+    volumeUnit: FilterField
+    netWeight: FilterField
+    grossWeight: FilterField
+    weightUnit: FilterField
+    maxStackSize: FilterField
+}
+
+
+

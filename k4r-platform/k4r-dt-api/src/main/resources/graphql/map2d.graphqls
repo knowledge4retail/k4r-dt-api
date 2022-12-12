@@ -1,0 +1,76 @@
+extend type QueryResolver {
+    " Get all maps2d (filter optional) "
+    maps2d(filter: Map2dFilter): [Map2d]
+}
+
+extend type MutationResolver {
+    "Update selectable attributes or create new map2d"
+    updateMap2d(map2d: Map2dInput, filter: Map2dFilter): Map2d
+    "create new instances of map2ds"
+    postMap2ds(map2ds: [Map2dInput]): [Map2d]
+}
+
+""" Map2d entity: Attributes are selectable """
+type Map2d {
+    id: ID!
+    timestamp: Int!
+    frameId: String!
+    deviceId: String
+    resolution: Float!
+    width: Float!
+    height: Float!
+    lengthUnitId: Int!
+    positionX: Float!
+    positionY: Float!
+    positionZ: Float!
+    orientationX: Float!
+    orientationY: Float!
+    orientationZ: Float!
+    orientationW: Float!
+    data: String!
+    storeId: Int!
+}
+
+""" Map2d entity: Attributes are selectable """
+input Map2dInput {
+    timestamp: Int
+    frameId: String
+    deviceId: String
+    resolution: Float
+    width: Float
+    height: Float
+    lengthUnitId: Int
+    positionX: Float
+    positionY: Float
+    positionZ: Float
+    orientationX: Float
+    orientationY: Float
+    orientationZ: Float
+    orientationW: Float
+    data: String
+    storeId: Int
+}
+
+"""  Map2d filter: Attributes are selectable """
+input Map2dFilter {
+    id: FilterField
+    timestamp: FilterField
+    frameId: FilterField
+    deviceId: FilterField
+    resolution: FilterField
+    width: FilterField
+    height: FilterField
+    lengthUnitId: FilterField
+    positionX: FilterField
+    positionY: FilterField
+    positionZ: FilterField
+    orientationX: FilterField
+    orientationY: FilterField
+    orientationZ: FilterField
+    orientationW: FilterField
+    data: FilterField
+    storeId: FilterField
+}
+
+
+
